@@ -15,23 +15,23 @@
 //
 // This will generate all the necessary go maps that hold the mapping Data
 //
-package iso
+package country
 
 import (
 	"fmt"
 )
 
-//go:generate csv2map -d "\t" -in country.txt -k 2 -v 1 -m alpha2ToCountry -p iso -h
+//go:generate csv2map -d "\t" -in country.txt -k 2 -v 1 -m alpha2ToCountry -p country -h
 // Map between Country Name and 2-digit alpha code
 func GetCountryNameFromAlpha2(alpha2 string) (string, error) {
-	country, ok := alpha3ToCountry[alpha2]
+	country, ok := alpha2ToCountry[alpha2]
 	if !ok {
 		return "", fmt.Errorf("No country found for alpha3 '%s'", alpha2)
 	}
 	return country, nil
 }
 
-//go:generate csv2map -d "\t" -in country.txt -k 3 -v 1 -m alpha3ToCountry -p iso -h
+//go:generate csv2map -d "\t" -in country.txt -k 3 -v 1 -m alpha3ToCountry -p country -h
 // Map between Country Name and 3-digit alpha code
 func GetCountryNameFromAlpha3(alpha3 string) (string, error) {
 	country, ok := alpha3ToCountry[alpha3]
@@ -41,7 +41,7 @@ func GetCountryNameFromAlpha3(alpha3 string) (string, error) {
 	return country, nil
 }
 
-//go:generate csv2map -d "\t" -in country.txt -k 4 -v 1 -m numericToCountry -p iso -h
+//go:generate csv2map -d "\t" -in country.txt -k 4 -v 1 -m numericToCountry -p country -h
 // Map between Country Name and 3-digit alpha code
 func GetCountryNameFromNumeric(numeric string) (string, error) {
 	country, ok := numericToCountry[numeric]
@@ -51,7 +51,7 @@ func GetCountryNameFromNumeric(numeric string) (string, error) {
 	return country, nil
 }
 
-//go:generate csv2map -d "\t" -in country.txt -k 3 -v 2 -m alpha3ToAlpha2 -p iso -h
+//go:generate csv2map -d "\t" -in country.txt -k 3 -v 2 -m alpha3ToAlpha2 -p country -h
 // Map between 3-digit alpha code and 2-digit alpha code
 func GetAlpha2FromAlpha3(alpha3 string) (string, error) {
 	alpha2, ok := alpha3ToAlpha2[alpha3]
@@ -61,7 +61,7 @@ func GetAlpha2FromAlpha3(alpha3 string) (string, error) {
 	return alpha2, nil
 }
 
-//go:generate csv2map -d "\t" -in country.txt -k 4 -v 2 -m numericToAlpha2 -p iso -h
+//go:generate csv2map -d "\t" -in country.txt -k 4 -v 2 -m numericToAlpha2 -p country -h
 // Map between 3-digit alpha code and 2-digit alpha code
 func GetAlpha2FromNumeric(numeric string) (string, error) {
 	alpha2, ok := numericToAlpha2[numeric]
@@ -71,7 +71,7 @@ func GetAlpha2FromNumeric(numeric string) (string, error) {
 	return alpha2, nil
 }
 
-//go:generate csv2map -d "\t" -in country.txt -k 2 -v 3 -m alpha2ToAlpha3 -p iso -h
+//go:generate csv2map -d "\t" -in country.txt -k 2 -v 3 -m alpha2ToAlpha3 -p country -h
 // Map between 3-digit alpha code and 2-digit alpha code
 func GetAlpha3FromAlpha2(alpha2 string) (string, error) {
 	alpha3, ok := alpha2ToAlpha3[alpha2]
@@ -81,7 +81,7 @@ func GetAlpha3FromAlpha2(alpha2 string) (string, error) {
 	return alpha3, nil
 }
 
-//go:generate csv2map -d "\t" -in country.txt -k 4 -v 3 -m numericToAlpha3 -p iso -h
+//go:generate csv2map -d "\t" -in country.txt -k 4 -v 3 -m numericToAlpha3 -p country -h
 // Map between 3-digit alpha code and 2-digit alpha code
 func GetAlpha3FromNumeric(numeric string) (string, error) {
 	alpha3, ok := numericToAlpha3[numeric]
@@ -91,7 +91,7 @@ func GetAlpha3FromNumeric(numeric string) (string, error) {
 	return alpha3, nil
 }
 
-//go:generate csv2map -d "\t" -in country.txt -k 2 -v 4 -m alpha2ToNumeric -p iso -h
+//go:generate csv2map -d "\t" -in country.txt -k 2 -v 4 -m alpha2ToNumeric -p country -h
 // Map between 2-digit alpha code and numeric code
 func GetNumericFromAlpha2(alpha2 string) (string, error) {
 	numeric, ok := alpha2ToNumeric[alpha2]
@@ -101,7 +101,7 @@ func GetNumericFromAlpha2(alpha2 string) (string, error) {
 	return numeric, nil
 }
 
-//go:generate csv2map -d "\t" -in country.txt -k 3 -v 4 -m alpha3ToNumeric -p iso -h
+//go:generate csv2map -d "\t" -in country.txt -k 3 -v 4 -m alpha3ToNumeric -p country -h
 // Map between 2-digit alpha code and numeric code
 func GetNumericFromAlpha3(alpha3 string) (string, error) {
 	numeric, ok := alpha3ToNumeric[alpha3]
