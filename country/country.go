@@ -23,7 +23,7 @@ import (
 
 //go:generate csv2map -d "\t" -in country.txt -k 2 -v 1 -m alpha2ToCountry -p iso -h
 // Map between Country Name and 2-digit alpha code
-func GetCountryNameFromISOAlpha2(alpha2 string) (string, error) {
+func GetCountryNameFromAlpha2(alpha2 string) (string, error) {
 	country, ok := alpha3ToCountry[alpha2]
 	if !ok {
 		return "", fmt.Errorf("No country found for alpha3 '%s'", alpha2)
@@ -33,7 +33,7 @@ func GetCountryNameFromISOAlpha2(alpha2 string) (string, error) {
 
 //go:generate csv2map -d "\t" -in country.txt -k 3 -v 1 -m alpha3ToCountry -p iso -h
 // Map between Country Name and 3-digit alpha code
-func GetCountryNameFromISOAlpha3(alpha3 string) (string, error) {
+func GetCountryNameFromAlpha3(alpha3 string) (string, error) {
 	country, ok := alpha3ToCountry[alpha3]
 	if !ok {
 		return "", fmt.Errorf("No country found for alpha3 '%s'", alpha3)
@@ -43,7 +43,7 @@ func GetCountryNameFromISOAlpha3(alpha3 string) (string, error) {
 
 //go:generate csv2map -d "\t" -in country.txt -k 4 -v 1 -m numericToCountry -p iso -h
 // Map between Country Name and 3-digit alpha code
-func GetCountryNameFromISONumeric(numeric string) (string, error) {
+func GetCountryNameFromNumeric(numeric string) (string, error) {
 	country, ok := numericToCountry[numeric]
 	if !ok {
 		return "", fmt.Errorf("No country found for numeric '%s'", numeric)
@@ -53,7 +53,7 @@ func GetCountryNameFromISONumeric(numeric string) (string, error) {
 
 //go:generate csv2map -d "\t" -in country.txt -k 3 -v 2 -m alpha3ToAlpha2 -p iso -h
 // Map between 3-digit alpha code and 2-digit alpha code
-func GetISOAlpha2FromAlpha3(alpha3 string) (string, error) {
+func GetAlpha2FromAlpha3(alpha3 string) (string, error) {
 	alpha2, ok := alpha3ToAlpha2[alpha3]
 	if !ok {
 		return "", fmt.Errorf("No alpha2 code found for alpha2 '%s'", alpha3)
@@ -63,7 +63,7 @@ func GetISOAlpha2FromAlpha3(alpha3 string) (string, error) {
 
 //go:generate csv2map -d "\t" -in country.txt -k 4 -v 2 -m numericToAlpha2 -p iso -h
 // Map between 3-digit alpha code and 2-digit alpha code
-func GetISOAlpha2FromNumeric(numeric string) (string, error) {
+func GetAlpha2FromNumeric(numeric string) (string, error) {
 	alpha2, ok := numericToAlpha2[numeric]
 	if !ok {
 		return "", fmt.Errorf("No alpha2 code found for numeric '%s'", numeric)
@@ -73,7 +73,7 @@ func GetISOAlpha2FromNumeric(numeric string) (string, error) {
 
 //go:generate csv2map -d "\t" -in country.txt -k 2 -v 3 -m alpha2ToAlpha3 -p iso -h
 // Map between 3-digit alpha code and 2-digit alpha code
-func GetISOAlpha3FromAlpha2(alpha2 string) (string, error) {
+func GetAlpha3FromAlpha2(alpha2 string) (string, error) {
 	alpha3, ok := alpha2ToAlpha3[alpha2]
 	if !ok {
 		return "", fmt.Errorf("No alpha3 code found for alpha2 '%s'", alpha2)
@@ -83,7 +83,7 @@ func GetISOAlpha3FromAlpha2(alpha2 string) (string, error) {
 
 //go:generate csv2map -d "\t" -in country.txt -k 4 -v 3 -m numericToAlpha3 -p iso -h
 // Map between 3-digit alpha code and 2-digit alpha code
-func GetISOAlpha3FromNumeric(numeric string) (string, error) {
+func GetAlpha3FromNumeric(numeric string) (string, error) {
 	alpha3, ok := numericToAlpha3[numeric]
 	if !ok {
 		return "", fmt.Errorf("No alpha3 code found for numeric '%s'", numeric)
